@@ -1,0 +1,445 @@
+# Assignment No. 2
+
+## Perform Data Preprocessing Tasks and Demonstrate Association Rule Mining
+
+---
+
+# 1. Objective of Experiment
+
+* To perform **data preprocessing** on dataset.
+* To apply **Association Rule Mining (ARM)** using the Apriori algorithm in Weka.
+* To find hidden relationships between attributes in dataset.
+
+---
+
+# 2. Dataset Used
+
+Dataset Name: `weather.symbolic`
+
+Total:
+
+* 14 instances (rows)
+* 5 attributes (columns)
+
+Attributes:
+
+1. outlook
+
+   * sunny
+   * rainy
+   * overcast
+
+2. temperature
+
+   * hot
+   * mild
+   * cool
+
+3. humidity
+
+   * high
+   * normal
+
+4. windy
+
+   * TRUE
+   * FALSE
+
+5. play
+
+   * yes
+   * no
+
+---
+
+# 3. What is Data Preprocessing?
+
+Data preprocessing means:
+
+* Cleaning data
+* Transforming data
+* Making data suitable for mining or machine learning
+
+In this experiment:
+
+* **Discretization** preprocessing is used.
+
+---
+
+# 4. What is Discretization?
+
+Discretization converts:
+
+* Numerical data
+  → into categories/groups.
+
+Example:
+
+| Numeric Value | Converted To |
+| ------------- | ------------ |
+| 35°C          | hot          |
+| 20°C          | cool         |
+
+Purpose:
+
+* Makes mining easier
+* Improves understanding of patterns
+
+---
+
+# 5. What is Association Rule Mining?
+
+Association Rule Mining finds:
+
+* Hidden patterns
+* Relationships between attributes
+
+General form:
+
+[
+A \Rightarrow B
+]
+
+Meaning:
+
+> If A happens, then B also happens.
+
+Example:
+
+```text id="9wzjkg"
+outlook=overcast ==> play=yes
+```
+
+Meaning:
+
+* Whenever outlook is overcast,
+* People always played.
+
+---
+
+# 6. Algorithm Used
+
+Algorithm: Apriori Algorithm
+
+Apriori:
+
+* Finds frequent item combinations
+* Generates strong rules
+* Uses support and confidence
+
+---
+
+# 7. Parameters Used
+
+| Parameter | Meaning                  |
+| --------- | ------------------------ |
+| -N 10     | Generate top 10 rules    |
+| -C 0.9    | Minimum confidence = 90% |
+| -M 0.1    | Minimum support = 10%    |
+| -T 0      | Confidence metric used   |
+
+---
+
+# 8. Understanding Output
+
+---
+
+## A) Minimum Support
+
+```text id="jlwm0k"
+Minimum support: 0.15 (2 instances)
+```
+
+Meaning:
+
+* Rule must appear at least 2 times in dataset.
+
+---
+
+## B) Minimum Confidence
+
+```text id="1ff6ix"
+Minimum metric <confidence>: 0.9
+```
+
+Meaning:
+
+* Rule must be at least 90% correct.
+
+---
+
+## C) Large Itemsets
+
+```text id="r7hrrn"
+L(1): 12
+L(2): 47
+L(3): 39
+L(4): 6
+```
+
+Meaning:
+
+| Itemset | Meaning             |
+| ------- | ------------------- |
+| L(1)    | Single items        |
+| L(2)    | 2-item combinations |
+| L(3)    | 3-item combinations |
+| L(4)    | 4-item combinations |
+
+---
+
+# 9. Important Terms
+
+---
+
+## Support
+
+Support tells:
+
+> How frequently rule appears in dataset.
+
+Formula:
+
+Support(A \Rightarrow B)=\frac{Transactions\ containing\ A\ and\ B}{Total\ Transactions}
+
+Example:
+
+* Rule appears 4 times in 14 rows.
+
+---
+
+## Confidence
+
+Confidence tells:
+
+> How often rule is true.
+
+Formula:
+
+Confidence(A \Rightarrow B)=\frac{Support(A\cap B)}{Support(A)}
+
+If confidence = 1:
+
+* Rule is 100% correct.
+
+---
+
+## Lift
+
+Lift tells:
+
+> Strength of relationship.
+
+| Lift Value | Meaning         |
+| ---------- | --------------- |
+| > 1        | Strong relation |
+| = 1        | Normal          |
+| < 1        | Weak relation   |
+
+---
+
+# 10. Explanation of Rules
+
+---
+
+## Rule 1
+
+```text id="izd4v7"
+outlook=overcast ==> play=yes
+```
+
+Explanation:
+
+* All overcast days had play=yes.
+* Confidence = 100%.
+
+Meaning:
+
+* Overcast weather strongly indicates people will play.
+
+---
+
+## Rule 2
+
+```text id="3r6jhc"
+temperature=cool ==> humidity=normal
+```
+
+Explanation:
+
+* Whenever temperature was cool,
+* Humidity was normal.
+
+---
+
+## Rule 3
+
+```text id="b8q7du"
+humidity=normal windy=FALSE ==> play=yes
+```
+
+Explanation:
+
+* If humidity is normal and wind is false,
+* People always played.
+
+---
+
+## Rule 4
+
+```text id="b0kq6f"
+outlook=sunny humidity=high ==> play=no
+```
+
+Explanation:
+
+* Sunny weather with high humidity resulted in no play.
+
+This is a strong rule.
+
+---
+
+# 11. Difference Between Both Outputs
+
+---
+
+## First Output
+
+Relation:
+
+```text id="x7c3xq"
+weather.symbolic-weka.filters.supervised.attribute.Discretize
+```
+
+Meaning:
+
+* Dataset was preprocessed using Discretize filter.
+
+---
+
+## Second Output
+
+Relation:
+
+```text id="w4vvmy"
+weather.symbolic
+```
+
+Meaning:
+
+* Original dataset without preprocessing.
+
+---
+
+# 12. Why Results are Same?
+
+Because:
+
+* Dataset already contains categorical values.
+* No numeric values are present.
+
+Attributes already contain:
+
+* sunny
+* rainy
+* hot
+* cool
+* yes/no
+
+So discretization did not change data.
+
+Therefore:
+
+* Same rules generated
+* Same confidence
+* Same support
+* Same output
+
+---
+
+# 13. Main Difference
+
+| First Output           | Second Output          |
+| ---------------------- | ---------------------- |
+| Preprocessed dataset   | Original dataset       |
+| Discretization applied | No preprocessing       |
+| Relation name changed  | Original relation name |
+| Output same            | Output same            |
+
+---
+
+# 14. Conclusion
+
+* Data preprocessing using discretization was performed successfully.
+* Apriori algorithm generated association rules.
+* Strong relationships between attributes were discovered.
+* Since dataset already contained symbolic values, preprocessing did not affect final results.
+* Rules like `outlook=overcast ==> play=yes` showed strong association with 100% confidence.
+
+
+
+
+
+# Short Steps for Assignment
+
+## Part A: Data Preprocessing
+
+1. Open Weka
+2. Click **Explorer**
+3. Click **Open File**
+4. Load `weather.symbolic.arff` dataset
+5. Go to **Preprocess** tab
+6. Click:
+
+```text id="njm2k7"
+Choose → filters → supervised → attribute → Discretize
+```
+
+7. Click **Apply**
+
+Dataset is now preprocessed.
+
+---
+
+# Part B: Association Rule Mining
+
+8. Go to **Associate** tab
+9. Click:
+
+```text id="4u0eu0"
+Choose → associations → Apriori
+```
+
+10. Set parameters:
+
+* Number of rules = 10
+* Confidence = 0.9
+* Minimum support = 0.1
+
+11. Click **Start**
+
+---
+
+# Output Interpretation
+
+* Apriori generates association rules.
+* Example:
+
+```text id="w64b5v"
+outlook=overcast ==> play=yes
+```
+
+Meaning:
+
+* Whenever outlook is overcast, play is yes.
+
+---
+
+# Difference Between Outputs
+
+| First Output          | Second Output    |
+| --------------------- | ---------------- |
+| Discretized dataset   | Original dataset |
+| Preprocessing applied | No preprocessing |
+
+Both outputs are same because dataset already contains categorical values.

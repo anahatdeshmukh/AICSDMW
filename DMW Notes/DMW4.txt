@@ -1,0 +1,490 @@
+You loaded `iris.arff` correctly, but for **OLAP operations** use `weather.nominal.arff` because it is easier to demonstrate Slice, Dice, etc.
+
+Right now you also selected the wrong filter (`RemoveFolds`), which is used for cross-validation, not OLAP.
+
+Do this now step-by-step:
+
+---
+
+# Step 1: Open Correct Dataset
+
+Click:
+
+```text id="90gw2t"
+Open file → data → weather.nominal.arff
+```
+
+---
+
+# Step 2: Perform Slice Operation
+
+## Goal:
+
+Show only one condition.
+
+### Steps
+
+1. In **Preprocess**
+2. Click **Choose**
+3. Select:
+
+```text id="4w1vcc"
+filters → unsupervised → instance → RemoveWithValues
+```
+
+4. Click on filter name to edit settings.
+
+5. Set:
+
+   * Attribute = `1` (outlook)
+   * Value = `1` (sunny)
+
+6. Click **Apply**
+
+### Result
+
+Only records with:
+
+```text id="m6uh1u"
+outlook = sunny
+```
+
+will remain.
+
+This is **Slice**.
+
+---
+
+# Step 3: Perform Dice Operation
+
+## Goal:
+
+Apply multiple conditions.
+
+### Steps
+
+1. Apply `RemoveWithValues`
+
+2. First select:
+
+   * `outlook = sunny`
+
+3. Again apply filter for:
+
+   * `humidity = high`
+
+### Result
+
+Data with:
+
+```text id="s73hms"
+outlook = sunny
+AND
+humidity = high
+```
+
+This is **Dice**.
+
+---
+
+# Step 4: Perform Roll-Up
+
+## Goal:
+
+Show summarized data.
+
+### Steps
+
+1. In Preprocess tab
+2. Remove unnecessary attributes.
+
+Example:
+Keep only:
+
+```text id="s1aq6y"
+play
+```
+
+using:
+
+```text id="h7j3lt"
+filters → unsupervised → attribute → Remove
+```
+
+### Result
+
+Summarized/simple view.
+
+This is **Roll-Up**.
+
+---
+
+# Step 5: Perform Drill-Down
+
+## Goal:
+
+Show detailed data.
+
+### Steps
+
+1. Undo Remove filter
+2. Show all attributes again:
+
+   * outlook
+   * humidity
+   * windy
+   * play
+
+### Result
+
+Detailed data appears.
+
+This is **Drill-Down**.
+
+---
+
+# Step 6: Perform Pivot
+
+WEKA has no direct pivot table.
+
+### Alternative:
+
+1. Go to **Visualize**
+2. Change X-axis and Y-axis attributes.
+
+Example:
+
+* X = humidity
+* Y = play
+
+Then change:
+
+* X = outlook
+* Y = windy
+
+This acts like Pivot/Rotate.
+
+---
+
+# What to Write in Record
+
+| Operation  | What You Did                   |
+| ---------- | ------------------------------ |
+| Slice      | Selected outlook = sunny       |
+| Dice       | Selected sunny + high humidity |
+| Roll-Up    | Reduced attributes for summary |
+| Drill-Down | Restored full detailed dataset |
+| Pivot      | Changed visualization axes     |
+
+
+
+EXCELLLLLLL
+
+# Assignment No. 4
+
+# Implementation of OLAP Operations Using `weather.nominal.arff` Dataset
+
+---
+
+# Step 1: Open Weka
+
+* Open WEKA
+* Click **Explorer**
+
+---
+
+# Step 2: Load Dataset
+
+1. Click:
+
+```text id="grdbpm"
+Open File
+```
+
+2. Select:
+
+```text id="ic8h0m"
+data → weather.nominal.arff
+```
+
+3. Click **Open**
+
+---
+
+# Dataset Attributes
+
+| Attribute   | Values                 |
+| ----------- | ---------------------- |
+| outlook     | sunny, rainy, overcast |
+| temperature | hot, mild, cool        |
+| humidity    | high, normal           |
+| windy       | TRUE, FALSE            |
+| play        | yes, no                |
+
+---
+
+# 1. Slice Operation
+
+---
+
+# Purpose
+
+Select data for one condition.
+
+Example:
+
+* Show only records where:
+
+```text id="r6l5n8"
+play = yes
+```
+
+---
+
+# Steps
+
+1. In **Preprocess**
+2. Click:
+
+```text id="chql1n"
+Choose → filters → unsupervised → instance → RemoveWithValues
+```
+
+3. Click filter name to edit settings.
+
+4. Set:
+
+| Option          | Value |
+| --------------- | ----- |
+| attributeIndex  | last  |
+| nominalIndices  | 1     |
+| invertSelection | True  |
+
+5. Click **OK**
+6. Click **Apply**
+
+---
+
+# Result
+
+Only records with:
+
+```text id="7u5qz4"
+play = yes
+```
+
+are displayed.
+
+This is **Slice Operation**.
+
+---
+
+# 2. Dice Operation
+
+---
+
+# Purpose
+
+Filter data using multiple conditions.
+
+Example:
+
+* outlook = sunny
+* humidity = high
+
+---
+
+# Steps
+
+## First Filter
+
+1. Apply `RemoveWithValues`
+2. Set:
+
+| Option          | Value |
+| --------------- | ----- |
+| attributeIndex  | 1     |
+| nominalIndices  | 1     |
+| invertSelection | True  |
+
+3. Click **Apply**
+
+(keeps only sunny records)
+
+---
+
+## Second Filter
+
+1. Again choose:
+
+```text id="tx9fiu"
+RemoveWithValues
+```
+
+2. Set:
+
+| Option          | Value |
+| --------------- | ----- |
+| attributeIndex  | 3     |
+| nominalIndices  | 1     |
+| invertSelection | True  |
+
+3. Click **Apply**
+
+---
+
+# Result
+
+Only records with:
+
+```text id="oqo88j"
+outlook = sunny
+AND
+humidity = high
+```
+
+This is **Dice Operation**.
+
+---
+
+# 3. Roll-Up Operation
+
+---
+
+# Purpose
+
+Summarize data.
+
+---
+
+# Steps
+
+1. Click:
+
+```text id="ijh0eh"
+Choose → filters → unsupervised → attribute → Remove
+```
+
+2. Edit filter settings.
+
+3. Remove unnecessary attributes.
+
+Example:
+Remove:
+
+* outlook
+* temperature
+* humidity
+* windy
+
+Keep only:
+
+```text id="k5ic7u"
+play
+```
+
+4. Click **Apply**
+
+---
+
+# Result
+
+Only summarized `play` attribute remains.
+
+This is **Roll-Up Operation**.
+
+---
+
+# 4. Drill-Down Operation
+
+---
+
+# Purpose
+
+Show detailed data from summarized data.
+
+---
+
+# Steps
+
+1. Click:
+
+```text id="k6rz2u"
+Undo
+```
+
+or reload dataset.
+
+2. All attributes return:
+
+* outlook
+* temperature
+* humidity
+* windy
+* play
+
+---
+
+# Result
+
+Detailed dataset is displayed again.
+
+This is **Drill-Down Operation**.
+
+---
+
+# 5. Pivot (Rotate) Operation
+
+---
+
+# Purpose
+
+Change data view orientation.
+
+---
+
+# Steps
+
+1. Go to:
+
+```text id="ccprrl"
+Visualize
+```
+
+2. Change:
+
+* X-axis attribute
+* Y-axis attribute
+
+Example:
+
+* X = humidity
+* Y = play
+
+Then change:
+
+* X = outlook
+* Y = windy
+
+---
+
+# Result
+
+Different data perspectives are shown.
+
+This acts as **Pivot/Rotate Operation**.
+
+---
+
+# Final Conclusion
+
+* OLAP operations were successfully demonstrated using `weather.nominal.arff` dataset in WEKA.
+* Operations performed:
+
+  * Slice
+  * Dice
+  * Roll-Up
+  * Drill-Down
+  * Pivot
+* These operations help in multidimensional data analysis and decision making.
+

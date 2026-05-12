@@ -1,0 +1,208 @@
+# Assignment No. 3
+
+## Demonstration of Classification Process using Naive Bayes Algorithm on Iris Dataset
+
+---
+
+# Objective
+
+* To perform classification using the Naive Bayes algorithm in Weka.
+* To classify flower species using `iris.arff` dataset.
+
+---
+
+# Dataset Used
+
+Dataset: `iris.arff`
+
+Total:
+
+* 150 instances
+* 3 attributes after preprocessing
+
+Attributes used:
+
+* petallength
+* petalwidth
+* class
+
+Classes:
+
+* Iris-setosa
+* Iris-versicolor
+* Iris-virginica
+
+---
+
+# What is Naive Bayes?
+
+Naive Bayes is a classification algorithm based on probability.
+
+It predicts class using Bayes theorem.
+
+It assumes:
+
+* All attributes are independent.
+
+Example:
+
+* Based on petal length and width,
+* It predicts flower type.
+
+---
+
+# Steps Performed
+
+1. Open Weka
+2. Go to **Explorer**
+3. Load `iris.arff` dataset
+4. Apply preprocessing filters:
+
+   * Remove attributes
+   * Normalize
+   * Replace Missing Values
+   * Attribute Selection
+5. Go to **Classify** tab
+6. Choose:
+
+```text id="sbhb2h"
+bayes → NaiveBayes
+```
+
+7. Click **Start**
+
+---
+
+# Output Explanation
+
+---
+
+## Correctly Classified Instances
+
+```text id="20n22j"
+144 (96%)
+```
+
+Meaning:
+
+* 144 flowers were classified correctly.
+
+Accuracy = 96%.
+
+---
+
+## Incorrectly Classified Instances
+
+```text id="7o3g7g"
+6 (4%)
+```
+
+Meaning:
+
+* 6 flowers were predicted wrongly.
+
+---
+
+## Kappa Statistic
+
+```text id="zbxax3"
+0.94
+```
+
+Meaning:
+
+* Model performance is very good.
+* Closer to 1 means better classification.
+
+---
+
+## Mean Absolute Error
+
+```text id="wb4zto"
+0.0265
+```
+
+Meaning:
+
+* Very small prediction error.
+
+---
+
+# Detailed Accuracy
+
+---
+
+## Iris-setosa
+
+```text id="4nqv4u"
+TP Rate = 1.000
+Precision = 1.000
+```
+
+Meaning:
+
+* All Iris-setosa flowers classified correctly.
+* 100% accurate.
+
+---
+
+## Iris-versicolor
+
+```text id="39dfgr"
+TP Rate = 0.940
+```
+
+Meaning:
+
+* 94% correctly classified.
+
+---
+
+## Iris-virginica
+
+```text id="y31iz3"
+TP Rate = 0.940
+```
+
+Meaning:
+
+* 94% correctly classified.
+
+---
+
+# Confusion Matrix Explanation
+
+```text id="h4czxe"
+  a  b  c
+ 50  0  0 | a = Iris-setosa
+  0 47  3 | b = Iris-versicolor
+  0  3 47 | c = Iris-virginica
+```
+
+Meaning:
+
+| Actual Class    | Correct | Wrong |
+| --------------- | ------- | ----- |
+| Iris-setosa     | 50      | 0     |
+| Iris-versicolor | 47      | 3     |
+| Iris-virginica  | 47      | 3     |
+
+Interpretation:
+
+* Iris-setosa classified perfectly.
+* Some confusion between:
+
+  * Iris-versicolor
+  * Iris-virginica
+
+Because their features are similar.
+
+---
+
+# Conclusion
+
+* Naive Bayes classification was successfully performed on Iris dataset.
+* The model achieved 96% accuracy.
+* Iris-setosa was classified perfectly.
+* Only few misclassifications occurred between Iris-versicolor and Iris-virginica.
+* The Naive Bayes algorithm showed very good performance for flower classification.

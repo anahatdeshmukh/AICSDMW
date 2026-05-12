@@ -1,0 +1,212 @@
+# Assignment No. 5
+
+# Demonstrate Performing Regression on Dataset Using Weka
+
+---
+
+# Objective
+
+* To perform Regression analysis using WEKA.
+* To predict continuous numeric values using regression algorithm.
+
+---
+
+# Dataset Used
+
+Use:
+
+```text id="q1msyx"
+cpu.arff
+```
+
+(Available in WEKA sample datasets)
+
+---
+
+# What is Regression?
+
+Regression is used to:
+
+* Predict numeric values.
+
+Example:
+
+* Predict salary
+* Predict marks
+* Predict house price
+
+Unlike classification:
+
+* Output is numeric, not categories.
+
+---
+
+# Algorithm Used
+
+Use:
+
+Linear Regression
+
+It finds relationship between:
+
+* Input attributes
+* Numeric output value
+
+---
+
+# Steps to Perform Regression in WEKA
+
+---
+
+# Step 1: Open WEKA
+
+1. Open Weka
+2. Click **Explorer**
+
+---
+
+# Step 2: Load Dataset
+
+1. Click:
+
+```text id="fgt0pn"
+Open File
+```
+
+2. Select:
+
+```text id="3c4y56"
+data → cpu.arff
+```
+
+3. Click **Open**
+
+---
+
+# Step 3: Set Class Attribute
+
+At bottom right:
+
+Select class attribute as:
+
+```text id="k24y0v"
+class
+```
+
+(or PRP depending on dataset)
+
+This is the value to predict.
+
+---
+
+# Step 4: Go to Classify Tab
+
+Click:
+
+```text id="h2vvso"
+Classify
+```
+
+---
+
+# Step 5: Select Linear Regression
+
+1. Click:
+
+```text id="e6pf8w"
+Choose
+→ functions
+→ LinearRegression
+```
+
+---
+
+# Step 6: Select Test Option
+
+Choose:
+
+```text id="5lz6v5"
+Use training set
+```
+
+---
+
+# Step 7: Run Algorithm
+
+Click:
+
+```text id="qycj7l"
+Start
+```
+
+---
+
+# Output Explanation
+
+---
+
+# Correlation Coefficient
+
+Example:
+
+```text id="yk50qe"
+Correlation coefficient = 0.99
+```
+
+Meaning:
+
+* Model prediction is very accurate.
+* Value close to 1 is better.
+
+---
+
+# Mean Absolute Error (MAE)
+
+Shows:
+
+* Average prediction error.
+
+Smaller value = better model.
+
+---
+
+# Root Mean Squared Error (RMSE)
+
+Measures:
+
+* Prediction accuracy.
+
+Lower RMSE means:
+
+* Better regression model.
+
+---
+
+# Regression Equation
+
+Example:
+
+```text id="tovw4t"
+class =
+2.5 * attribute1 + 1.3 * attribute2 + 5
+```
+
+Meaning:
+
+* WEKA generated mathematical prediction formula.
+
+---
+
+# Result
+
+* Regression model predicts numeric values.
+* Linear Regression successfully trained on dataset.
+
+---
+
+# Conclusion
+
+* Regression was successfully performed using Linear Regression algorithm in WEKA.
+* `cpu.arff` dataset was used.
+* The model predicted continuous numeric values with good accuracy.
+* Regression helps in forecasting and predictive analysis.

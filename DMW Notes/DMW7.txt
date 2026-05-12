@@ -1,0 +1,404 @@
+# Complete WEKA Lab Experiment
+
+# Data Preprocessing + Discretization + Association Rule Mining using Apriori
+
+Dataset Used:
+
+```text id="13lrlv"
+employee.arff
+```
+
+---
+
+# AIM
+
+To perform:
+
+1. Data preprocessing
+2. Discretization filter
+3. Association Rule Mining using Apriori algorithm
+   in WEKA.
+
+---
+
+# SOFTWARE REQUIRED
+
+* [WEKA official website](https://www.cs.waikato.ac.nz/ml/weka/?utm_source=chatgpt.com)
+
+---
+
+# STEP 1 — Open WEKA
+
+1. Launch WEKA.
+2. WEKA GUI Chooser opens.
+3. Click:
+
+```text id="zw5b2k"
+Explorer
+```
+
+---
+
+# STEP 2 — Open Dataset
+
+1. Go to:
+
+```text id="y9p34v"
+Preprocess
+```
+
+tab.
+
+2. Click:
+
+```text id="yvk9jo"
+Open file
+```
+
+3. Select:
+
+```text id="rm6j6n"
+employee.arff
+```
+
+4. Click:
+
+```text id="bjsv3g"
+Open
+```
+
+---
+
+# STEP 3 — Observe Dataset
+
+Dataset loads successfully.
+
+You will see:
+
+* Relation name
+* Number of instances
+* Attributes
+* Graph visualization
+
+Attributes:
+
+| No | Attribute   |
+| -- | ----------- |
+| 1  | Age         |
+| 2  | Salary      |
+| 3  | Experience  |
+| 4  | Department  |
+| 5  | Performance |
+
+---
+
+# STEP 4 — Understand Numeric Attributes
+
+Click:
+
+* Age
+* Salary
+* Experience
+
+You’ll notice:
+
+```text id="lzw0ql"
+Type: Numeric
+```
+
+Association rule mining works better with categorical data.
+
+So we apply discretization.
+
+---
+
+# STEP 5 — Select Discretization Filter
+
+In Filter section:
+
+Click:
+
+```text id="h3mjlwm"
+Choose
+```
+
+Navigate:
+
+```text id="g28x2u"
+unsupervised
+→ attribute
+→ Discretize
+```
+
+Select:
+
+```text id="5qbj1s"
+Discretize
+```
+
+Now filter name appears:
+
+```text id="jlwm9m"
+Discretize -B 10 -M -1.0 -R first-last -precision 6
+```
+
+This means:
+
+```text id="gnlq6z"
+weka.filters.unsupervised.attribute.Discretize
+```
+
+is selected successfully.
+
+---
+
+# STEP 6 — Apply Filter
+
+Click:
+
+```text id="es1twl"
+Apply
+```
+
+Wait a few seconds.
+
+---
+
+# STEP 7 — Verify Discretization
+
+Now click:
+
+* Age
+* Salary
+* Experience
+
+On right side you should see:
+
+```text id="74ud88"
+Type: Nominal
+```
+
+instead of Numeric.
+
+This confirms preprocessing completed successfully.
+
+---
+
+# STEP 8 — Save Preprocessed Dataset (Optional)
+
+Click:
+
+```text id="qcf9p0"
+Save
+```
+
+Save as:
+
+```text id="j3mbkn"
+employee_discretized.arff
+```
+
+---
+
+# STEP 9 — Open Associate Tab
+
+Click top menu:
+
+```text id="2gzn9w"
+Associate
+```
+
+---
+
+# STEP 10 — Select Apriori Algorithm
+
+Click:
+
+```text id="7e9j5g"
+Choose
+```
+
+Navigate:
+
+```text id="g09f3y"
+rules
+→ Apriori
+```
+
+Select:
+
+```text id="jlwm2u"
+Apriori
+```
+
+Now you’ll see:
+
+```text id="hq1v6y"
+weka.associations.Apriori
+```
+
+---
+
+# STEP 11 — Configure Apriori
+
+Click on:
+
+```text id="tn6y2l"
+Apriori
+```
+
+Set values:
+
+| Parameter            | Value |
+| -------------------- | ----- |
+| numRules             | 10    |
+| lowerBoundMinSupport | 0.1   |
+| minMetric            | 0.9   |
+
+Click:
+
+```text id="4ll7du"
+OK
+```
+
+---
+
+# STEP 12 — Run Association Rule Mining
+
+Click:
+
+```text id="x00q5t"
+Start
+```
+
+WEKA begins mining association rules.
+
+---
+
+# STEP 13 — View Output Rules
+
+Rules appear in Result List panel.
+
+Example:
+
+```text id="w8q8wv"
+Department=Finance ==> Performance=High
+```
+
+Meaning:
+Employees in Finance department usually have High performance.
+
+---
+
+Another example:
+
+```text id="9m8mze"
+Experience=(6-10] ==> Performance=High
+```
+
+Meaning:
+Employees with 6–10 years experience usually perform highly.
+
+---
+
+# STEP 14 — Understand Support
+
+Support tells how frequently a rule appears.
+
+Support(A \Rightarrow B)=\frac{Count(A\cap B)}{Total\ Transactions}
+
+Example:
+If 5 out of 20 records satisfy rule:
+
+```text id="vtghpi"
+Support = 5/20 = 25%
+```
+
+---
+
+# STEP 15 — Understand Confidence
+
+Confidence tells accuracy of rule.
+
+Confidence(A \Rightarrow B)=\frac{Count(A\cap B)}{Count(A)}
+
+Example:
+If 4 out of 5 Finance employees have High performance:
+
+```text id="wd93ij"
+Confidence = 4/5 = 80%
+```
+
+---
+
+# STEP 16 — Visualization (Optional)
+
+Right-click result in Result List.
+
+Choose:
+
+* Visualize graph
+* Visualize tree
+
+(if available)
+
+---
+
+# RESULT
+
+* Successfully loaded dataset in WEKA.
+* Applied discretization preprocessing filter.
+* Converted numeric attributes into nominal intervals.
+* Performed Association Rule Mining using Apriori algorithm.
+* Generated association rules using support and confidence.
+
+---
+
+# ADVANTAGES
+
+| Technique         | Benefit                        |
+| ----------------- | ------------------------------ |
+| Discretization    | Converts numeric → categorical |
+| Apriori           | Finds hidden relationships     |
+| Association Rules | Helps pattern discovery        |
+
+---
+
+# VIVA QUESTIONS
+
+## What is preprocessing?
+
+Cleaning and transforming data before mining.
+
+---
+
+## What is discretization?
+
+Conversion of numeric data into intervals/bins.
+
+---
+
+## Why use Apriori?
+
+To discover frequent patterns and relationships.
+
+---
+
+## What is support?
+
+Frequency of occurrence of a rule.
+
+---
+
+## What is confidence?
+
+Accuracy/reliability of a rule.
+
+---
+
+## Difference between classification and association mining?
+
+| Classification | Association Mining  |
+| -------------- | ------------------- |
+| Predicts class | Finds relationships |
+| Supervised     | Unsupervised        |

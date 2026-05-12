@@ -1,0 +1,29 @@
+@relation employee
+
+@attribute Age numeric
+@attribute Salary numeric
+@attribute Experience numeric
+@attribute Department {HR,IT,Sales,Finance}
+@attribute Performance {Low,Medium,High}
+
+@data
+25,30000,2,HR,Medium
+28,40000,4,IT,High
+35,50000,8,Finance,High
+22,25000,1,Sales,Low
+30,45000,5,IT,High
+27,32000,3,HR,Medium
+40,60000,12,Finance,High
+24,28000,2,Sales,Low
+31,47000,6,IT,High
+29,35000,4,HR,Medium
+45,70000,15,Finance,High
+23,26000,1,Sales,Low
+32,48000,7,IT,High
+26,31000,3,HR,Medium
+38,55000,10,Finance,High
+21,24000,1,Sales,Low
+33,49000,7,IT,High
+28,33000,4,HR,Medium
+42,65000,13,Finance,High
+25,27000,2,Sales,Low

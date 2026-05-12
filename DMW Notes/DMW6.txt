@@ -1,0 +1,134 @@
+# Visualization of Cluster Sets in Weka
+
+After running Simple K-Means on `iris.arff`, follow these steps to visualize clusters.
+
+---
+
+# Steps to Visualize Clusters
+
+---
+
+# Step 1: Run Simple K-Means
+
+* Load:
+
+```text id="e2v6nr"
+iris.arff
+```
+
+* Go to:
+
+```text id="y9m0qj"
+Cluster
+```
+
+* Choose:
+
+```text id="v0jwqy"
+SimpleKMeans
+```
+
+* Set:
+
+```text id="yrf5w7"
+Num Clusters = 3
+```
+
+* Ignore:
+
+```text id="j0ylvl"
+class attribute
+```
+
+* Click:
+
+```text id="xprbg3"
+Start
+```
+
+---
+
+# Step 2: Locate Result List
+
+After execution:
+
+* Left side panel shows result.
+
+Example:
+
+```text id="xgk7xj"
+1: SimpleKMeans
+```
+
+---
+
+# Step 3: Right Click Result
+
+* Right-click on:
+
+```text id="jlwm2i"
+SimpleKMeans result
+```
+
+---
+
+# Step 4: Select Visualization
+
+Click:
+
+```text id="by3b0w"
+Visualize cluster assignments
+```
+
+---
+
+# Step 5: Visualization Window Opens
+
+You will see:
+
+* Scatter plot
+* Different colored clusters
+
+Each color represents:
+
+* Different cluster group
+
+---
+
+# Step 6: Change Axes
+
+At bottom:
+
+* Select different attributes for:
+
+  * X-axis
+  * Y-axis
+
+Best combinations:
+
+* petallength vs petalwidth
+* sepallength vs sepalwidth
+
+---
+
+# Interpretation
+
+* Similar flowers appear in same color cluster.
+* Different groups are separated visually.
+
+Example:
+
+* One cluster may contain Iris-setosa flowers.
+* Other clusters may contain versicolor and virginica.
+
+---
+
+# Viva/Record Explanation
+
+> Cluster visualization was performed using “Visualize Cluster Assignments” option in WEKA. Scatter plots displayed different clusters using different colors, helping to identify grouped flower patterns visually.
+
+---
+
+# Conclusion Addition
+
+> Cluster visualization helped in understanding how iris flower data was grouped based on similarity using Simple K-Means clustering algorithm.
