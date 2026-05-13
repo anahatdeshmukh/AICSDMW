@@ -1,0 +1,449 @@
+# Assignment No. 8
+
+# Apriori Algorithm Program in Jupyter Notebook (Python)
+
+---
+
+# Objective
+
+To implement:
+
+# Apriori Algorithm
+
+using Python in Jupyter Notebook for:
+
+* Frequent itemset mining
+* Association rule generation
+
+---
+
+# STEP 1 — Install Required Libraries
+
+Run this command in Jupyter Notebook cell:
+
+```python id="ap1"
+!pip install pandas mlxtend
+```
+
+---
+
+# Explanation
+
+## pandas
+
+Used for:
+
+* Reading datasets
+* Handling tables/dataframes
+
+## mlxtend
+
+Provides:
+
+* Apriori algorithm
+* Association rule functions
+
+---
+
+# STEP 2 — Import Libraries
+
+## Code
+
+```python id="ap2"
+import pandas as pd
+```
+
+### Explanation
+
+Imports Pandas library.
+
+Used for:
+
+* Creating tables
+* Handling dataset
+
+---
+
+## Code
+
+```python id="ap3"
+from mlxtend.frequent_patterns import apriori
+```
+
+### Explanation
+
+Imports Apriori algorithm function.
+
+Used to:
+
+* Find frequent itemsets
+
+---
+
+## Code
+
+```python id="ap4"
+from mlxtend.frequent_patterns import association_rules
+```
+
+### Explanation
+
+Imports function for generating association rules.
+
+---
+
+# STEP 3 — Create Dataset
+
+## Code
+
+```python id="ap5"
+dataset = {
+    'Milk': [1, 1, 0, 1, 0],
+    'Bread': [1, 1, 1, 0, 1],
+    'Butter': [0, 1, 1, 1, 0],
+    'Jam': [1, 0, 1, 1, 1]
+}
+```
+
+---
+
+# Explanation
+
+Creating transaction dataset.
+
+| Milk | Bread | Butter | Jam |
+| ---- | ----- | ------ | --- |
+| 1    | 1     | 0      | 1   |
+
+Meaning:
+
+* 1 → Item present
+* 0 → Item absent
+
+---
+
+# STEP 4 — Convert Dataset into DataFrame
+
+## Code
+
+```python id="ap6"
+df = pd.DataFrame(dataset)
+```
+
+---
+
+# Explanation
+
+Converts dictionary into table format.
+
+Machine learning works better with structured tables.
+
+---
+
+# STEP 5 — Display Dataset
+
+## Code
+
+```python id="ap7"
+print(df)
+```
+
+---
+
+# Explanation
+
+Displays complete transaction dataset.
+
+---
+
+# STEP 6 — Apply Apriori Algorithm
+
+## Code
+
+```python id="ap8"
+frequent_itemsets = apriori(df, min_support=0.4, use_colnames=True)
+```
+
+---
+
+# Explanation
+
+Runs Apriori algorithm.
+
+---
+
+# Meaning of Parameters
+
+## df
+
+Input dataset.
+
+---
+
+## min_support = 0.4
+
+Minimum support:
+
+```text id="ap9"
+40%
+```
+
+Rule must appear in at least 40% transactions.
+
+---
+
+## use_colnames=True
+
+Displays:
+
+* Actual item names
+
+instead of:
+
+* Column numbers
+
+---
+
+# What Happens Internally?
+
+Apriori:
+
+1. Finds frequent item combinations
+2. Removes infrequent combinations
+3. Generates frequent itemsets
+
+---
+
+# STEP 7 — Display Frequent Itemsets
+
+## Code
+
+```python id="ap10"
+print(frequent_itemsets)
+```
+
+---
+
+# Explanation
+
+Displays:
+
+* Frequent item combinations
+* Their support values
+
+---
+
+# Example Output
+
+| support | itemsets |
+| ------- | -------- |
+| 0.6     | (Milk)   |
+| 0.8     | (Bread)  |
+
+---
+
+# Meaning
+
+```text id="ap11"
+Bread support = 0.8
+```
+
+means:
+Bread appears in:
+
+```text id="ap12"
+80%
+```
+
+of transactions.
+
+---
+
+# STEP 8 — Generate Association Rules
+
+## Code
+
+```python id="ap13"
+rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.7)
+```
+
+---
+
+# Explanation
+
+Generates association rules from frequent itemsets.
+
+---
+
+# Meaning of Parameters
+
+## metric="confidence"
+
+Uses:
+
+# Confidence
+
+to evaluate rules.
+
+---
+
+## min_threshold=0.7
+
+Minimum confidence:
+
+```text id="ap14"
+70%
+```
+
+---
+
+# What Happens?
+
+Rules with confidence less than 70% are removed.
+
+---
+
+# STEP 9 — Display Rules
+
+## Code
+
+```python id="ap15"
+print(rules)
+```
+
+---
+
+# Explanation
+
+Displays:
+
+* Association rules
+* Support
+* Confidence
+* Lift
+
+---
+
+# Example Output
+
+| antecedents | consequents | confidence |
+| ----------- | ----------- | ---------- |
+| Milk        | Bread       | 0.75       |
+
+---
+
+# Meaning
+
+```text id="ap16"
+Milk → Bread
+```
+
+means:
+Customers buying Milk also buy Bread.
+
+Confidence:
+
+```text id="ap17"
+75%
+```
+
+---
+
+# COMPLETE PROGRAM
+
+```python id="ap18"
+import pandas as pd
+from mlxtend.frequent_patterns import apriori
+from mlxtend.frequent_patterns import association_rules
+
+dataset = {
+    'Milk': [1, 1, 0, 1, 0],
+    'Bread': [1, 1, 1, 0, 1],
+    'Butter': [0, 1, 1, 1, 0],
+    'Jam': [1, 0, 1, 1, 1]
+}
+
+df = pd.DataFrame(dataset)
+
+print("Dataset:")
+print(df)
+
+frequent_itemsets = apriori(df, min_support=0.4, use_colnames=True)
+
+print("\nFrequent Itemsets:")
+print(frequent_itemsets)
+
+rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.7)
+
+print("\nAssociation Rules:")
+print(rules)
+```
+
+---
+
+# Expected Output
+
+## Frequent Itemsets
+
+* Milk
+* Bread
+* Jam
+* Milk & Bread
+
+---
+
+## Association Rules
+
+Example:
+
+```text id="ap19"
+Milk → Bread
+```
+
+---
+
+# Important Terms
+
+## Support
+
+Frequency of item occurrence.
+
+Formula:
+Support(A)=\frac{Transactions\ containing\ A}{Total\ Transactions}
+
+---
+
+## Confidence
+
+Accuracy of rule.
+
+Formula:
+Confidence(A \rightarrow B)=\frac{Support(A\cap B)}{Support(A)}
+
+---
+
+## Lift
+
+Measures relationship strength.
+
+| Lift | Meaning         |
+| ---- | --------------- |
+| >1   | Strong relation |
+| =1   | Independent     |
+| <1   | Weak relation   |
+
+---
+
+# Result
+
+* Apriori algorithm implemented successfully.
+* Frequent itemsets generated.
+* Association rules discovered.
+
+---
+
+# Conclusion
+
+* Association Rule Mining was successfully performed using Python.
+* Apriori algorithm identified hidden patterns in transaction dataset.
+* Rules were generated using support and confidence measures.
