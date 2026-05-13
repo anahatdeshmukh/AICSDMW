@@ -1,0 +1,657 @@
+# AICS Assignment 1
+
+# Spam Filter using Python and Naive Bayes
+
+(Code Line Followed by Simple Explanation)
+
+```python
+import pandas as pd
+```
+
+### Explanation
+
+Imports the Pandas library.
+
+Used for:
+
+* Reading datasets
+* Handling tables/dataframes
+
+---
+
+```python
+from sklearn.model_selection import train_test_split
+```
+
+### Explanation
+
+Imports function to split dataset into:
+
+* Training data
+* Testing data
+
+---
+
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+```
+
+### Explanation
+
+Converts text messages into numbers.
+
+Machine learning cannot understand raw text directly.
+
+---
+
+```python
+from sklearn.naive_bayes import MultinomialNB
+```
+
+### Explanation
+
+Imports Naive Bayes algorithm used for text classification.
+
+---
+
+```python
+from sklearn.metrics import accuracy_score
+```
+
+### Explanation
+
+Used to calculate model accuracy.
+
+---
+
+```python
+data = pd.read_csv("spam.csv")
+```
+
+### Explanation
+
+Reads spam dataset from CSV file.
+
+Dataset contains:
+
+* Message text
+* Spam/ham label
+
+---
+
+```python
+print(data.head())
+```
+
+### Explanation
+
+Displays first 5 rows of dataset.
+
+Used to check whether dataset loaded correctly.
+
+---
+
+```python
+x = data["message"]
+```
+
+### Explanation
+
+Stores message column into variable `x`.
+
+`x` contains input features.
+
+---
+
+```python
+y = data["label"]
+```
+
+### Explanation
+
+Stores label column into variable `y`.
+
+Labels:
+
+* spam
+* ham
+
+---
+
+```python
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+```
+
+### Explanation
+
+Splits dataset into:
+
+* 80% training
+* 20% testing
+
+Training data teaches model.
+
+Testing data checks performance.
+
+---
+
+```python
+cv = CountVectorizer()
+```
+
+### Explanation
+
+Creates object for converting text into numerical vectors.
+
+---
+
+```python
+x_train = cv.fit_transform(x_train)
+```
+
+### Explanation
+
+Learns vocabulary from training data and converts messages into numbers.
+
+Example:
+
+```text id="r1"
+free money
+```
+
+becomes:
+
+| free | money |
+| ---- | ----- |
+| 1    | 1     |
+
+---
+
+```python
+x_test = cv.transform(x_test)
+```
+
+### Explanation
+
+Converts testing messages into numerical format using same vocabulary.
+
+---
+
+```python
+model = MultinomialNB()
+```
+
+### Explanation
+
+Creates Naive Bayes model.
+
+---
+
+```python
+model.fit(x_train, y_train)
+```
+
+### Explanation
+
+Trains model using training data.
+
+Model learns:
+
+* Spam patterns
+* Ham patterns
+
+---
+
+```python
+prediction = model.predict(x_test)
+```
+
+### Explanation
+
+Predicts labels for testing data.
+
+Output:
+
+* spam
+* ham
+
+---
+
+```python
+accuracy = accuracy_score(y_test, prediction)
+```
+
+### Explanation
+
+Calculates prediction accuracy.
+
+Formula:
+Accuracy=\frac{Correct\ Predictions}{Total\ Predictions}
+
+---
+
+```python
+print("Accuracy:", accuracy)
+```
+
+### Explanation
+
+Displays final model accuracy.
+
+---
+
+# AICS Assignment 2
+
+# DDoS Attack Classification
+
+(Code + Explanation)
+
+```python
+import pandas as pd
+```
+
+### Explanation
+
+Imports Pandas for handling dataset.
+
+---
+
+```python
+from sklearn.model_selection import train_test_split
+```
+
+### Explanation
+
+Used to divide data into training and testing sets.
+
+---
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+```
+
+### Explanation
+
+Imports Decision Tree classification algorithm.
+
+Used to detect attacks.
+
+---
+
+```python
+from sklearn.metrics import accuracy_score
+```
+
+### Explanation
+
+Used to calculate accuracy.
+
+---
+
+```python
+data = pd.read_csv("ddos.csv")
+```
+
+### Explanation
+
+Loads DDoS dataset.
+
+---
+
+```python
+print(data.head())
+```
+
+### Explanation
+
+Shows first 5 rows.
+
+---
+
+```python
+x = data.drop("label", axis=1)
+```
+
+### Explanation
+
+Removes label column.
+
+Remaining columns become features.
+
+---
+
+```python
+y = data["label"]
+```
+
+### Explanation
+
+Stores target labels.
+
+Example:
+
+* Normal
+* Attack
+
+---
+
+```python
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3)
+```
+
+### Explanation
+
+Splits data:
+
+* 70% training
+* 30% testing
+
+---
+
+```python
+model = DecisionTreeClassifier()
+```
+
+### Explanation
+
+Creates Decision Tree model.
+
+---
+
+```python
+model.fit(x_train, y_train)
+```
+
+### Explanation
+
+Trains model using training data.
+
+---
+
+```python
+prediction = model.predict(x_test)
+```
+
+### Explanation
+
+Predicts whether traffic is:
+
+* Normal
+* Attack
+
+---
+
+```python
+accuracy = accuracy_score(y_test, prediction)
+```
+
+### Explanation
+
+Computes accuracy.
+
+---
+
+```python
+print("Accuracy:", accuracy)
+```
+
+### Explanation
+
+Displays final accuracy.
+
+---
+
+# AICS Assignment 3
+
+# Split Data into Training and Testing Sets
+
+(Code + Explanation)
+
+```python
+import pandas as pd
+```
+
+### Explanation
+
+Imports Pandas library.
+
+---
+
+```python
+from sklearn.model_selection import train_test_split
+```
+
+### Explanation
+
+Imports train-test splitting function.
+
+---
+
+```python
+data = pd.read_csv("data.csv")
+```
+
+### Explanation
+
+Loads dataset.
+
+---
+
+```python
+print(data.head())
+```
+
+### Explanation
+
+Displays first rows.
+
+---
+
+```python
+x = data.iloc[:, :-1]
+```
+
+### Explanation
+
+Selects all columns except last column.
+
+These are input features.
+
+---
+
+```python
+y = data.iloc[:, -1]
+```
+
+### Explanation
+
+Selects last column as target label.
+
+---
+
+```python
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+```
+
+### Explanation
+
+Splits dataset:
+
+* 80% training
+* 20% testing
+
+---
+
+```python
+print("Training Data Size:", len(x_train))
+```
+
+### Explanation
+
+Displays number of training rows.
+
+---
+
+```python
+print("Testing Data Size:", len(x_test))
+```
+
+### Explanation
+
+Displays number of testing rows.
+
+---
+
+# AICS Assignment 4
+
+# Feature Engineering on Raw Data
+
+(Code + Explanation)
+
+```python
+import pandas as pd
+```
+
+### Explanation
+
+Imports Pandas library.
+
+---
+
+```python
+from sklearn.preprocessing import LabelEncoder
+```
+
+### Explanation
+
+Used to convert text labels into numbers.
+
+---
+
+```python
+from sklearn.preprocessing import MinMaxScaler
+```
+
+### Explanation
+
+Used for normalization/scaling.
+
+---
+
+```python
+data = pd.read_csv("rawdata.csv")
+```
+
+### Explanation
+
+Loads raw dataset.
+
+---
+
+```python
+print(data.head())
+```
+
+### Explanation
+
+Displays dataset preview.
+
+---
+
+```python
+data.fillna(data.mean(), inplace=True)
+```
+
+### Explanation
+
+Fills missing numeric values using mean.
+
+---
+
+```python
+encoder = LabelEncoder()
+```
+
+### Explanation
+
+Creates label encoder object.
+
+---
+
+```python
+data["Gender"] = encoder.fit_transform(data["Gender"])
+```
+
+### Explanation
+
+Converts categorical values into numbers.
+
+Example:
+
+```text id="g1"
+Male → 1
+Female → 0
+```
+
+---
+
+```python
+scaler = MinMaxScaler()
+```
+
+### Explanation
+
+Creates normalization object.
+
+---
+
+```python
+data[["Age", "Salary"]] = scaler.fit_transform(data[["Age", "Salary"]])
+```
+
+### Explanation
+
+Scales values between:
+0 \leq x \leq 1
+
+---
+
+```python
+print(data.head())
+```
+
+### Explanation
+
+Displays cleaned and transformed dataset.
+
+---
+
+# Common Viva Questions
+
+## Why preprocessing is important?
+
+Improves model accuracy and removes unwanted data.
+
+---
+
+## Why convert text into numbers?
+
+Machine learning algorithms only understand numerical values.
+
+---
+
+## Why split dataset?
+
+To test real performance of model.
+
+---
+
+## Why use Naive Bayes in spam filtering?
+
+Works efficiently for text classification.
+
+---
+
+## What is normalization?
+
+Scaling values into smaller range for balanced learning.
