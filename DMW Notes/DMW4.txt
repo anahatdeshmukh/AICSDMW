@@ -1,3 +1,552 @@
+Using EXCEL
+
+# Assignment No. 4
+
+# OLAP Operations Using Excel Pivot Table on Superstore Dataset
+
+Dataset Used:
+
+```text id="s1"
+Sample - Superstore.csv
+```
+
+The dataset contains:
+
+* Sales
+* Profit
+* Region
+* Category
+* Segment
+* State
+* Quantity
+
+This dataset is very suitable for OLAP analysis.
+
+---
+
+# Objective
+
+To perform:
+
+* Slice
+* Dice
+* Roll-Up
+* Drill-Down
+* Pivot
+
+using Excel Pivot Table on Superstore dataset.
+
+---
+
+# STEP 1 — Open Dataset in Excel
+
+1. Open:
+
+```text id="s2"
+Microsoft Excel
+```
+
+2. Click:
+
+```text id="s3"
+File → Open
+```
+
+3. Select:
+
+```text id="s4"
+Sample - Superstore.csv
+```
+
+---
+
+# What Happens?
+
+Excel loads sales dataset containing:
+
+* Customer information
+* Product details
+* Sales data
+* Profit data
+
+---
+
+# STEP 2 — Select Complete Dataset
+
+1. Press:
+
+```text id="s5"
+Ctrl + A
+```
+
+OR manually select all rows and columns.
+
+---
+
+# What We Are Doing?
+
+Selecting entire dataset for Pivot Table creation.
+
+---
+
+# STEP 3 — Create Pivot Table
+
+1. Click:
+
+```text id="s6"
+Insert
+```
+
+2. Click:
+
+```text id="s7"
+Pivot Table
+```
+
+3. Verify table range.
+
+4. Select:
+
+```text id="s8"
+New Worksheet
+```
+
+5. Click:
+
+```text id="s9"
+OK
+```
+
+---
+
+# What Happens?
+
+Excel creates:
+
+* Pivot Table workspace
+* Pivot Field List
+
+You will see sections:
+
+| Section | Purpose         |
+| ------- | --------------- |
+| Filters | Apply filters   |
+| Rows    | Row grouping    |
+| Columns | Column grouping |
+| Values  | Calculations    |
+
+---
+
+# 1. SLICE OPERATION
+
+# Purpose
+
+Filter dataset using one condition.
+
+Example:
+Show only:
+
+```text id="s10"
+Region = West
+```
+
+---
+
+# Steps
+
+## Step 1
+
+Drag:
+
+```text id="s11"
+Region
+```
+
+to:
+
+```text id="s12"
+Filters
+```
+
+---
+
+## Step 2
+
+Click dropdown filter.
+
+---
+
+## Step 3
+
+Select:
+
+```text id="s13"
+West
+```
+
+---
+
+# What Happens?
+
+Only records belonging to:
+
+```text id="s14"
+West Region
+```
+
+are displayed.
+
+---
+
+# Why Called Slice?
+
+Because one portion (“slice”) of data is selected.
+
+---
+
+# Result
+
+Analysis now contains only West region sales.
+
+---
+
+# 2. DICE OPERATION
+
+# Purpose
+
+Filter data using multiple conditions.
+
+Example:
+
+* Region = West
+* Category = Furniture
+
+---
+
+# Steps
+
+## Step 1
+
+Drag:
+
+```text id="s15"
+Region
+```
+
+to:
+
+```text id="s16"
+Filters
+```
+
+Select:
+
+```text id="s17"
+West
+```
+
+---
+
+## Step 2
+
+Drag:
+
+```text id="s18"
+Category
+```
+
+to:
+
+```text id="s19"
+Filters
+```
+
+Select:
+
+```text id="s20"
+Furniture
+```
+
+---
+
+# What Happens?
+
+Excel shows only records where:
+
+```text id="s21"
+Region = West
+AND
+Category = Furniture
+```
+
+---
+
+# Why Called Dice?
+
+Because multiple dimensions are filtered together.
+
+---
+
+# Result
+
+Smaller detailed dataset matching both conditions.
+
+---
+
+# 3. ROLL-UP OPERATION
+
+# Purpose
+
+Summarize detailed data.
+
+Example:
+Total sales by region.
+
+---
+
+# Steps
+
+## Step 1
+
+Drag:
+
+```text id="s22"
+Region
+```
+
+to:
+
+```text id="s23"
+Rows
+```
+
+---
+
+## Step 2
+
+Drag:
+
+```text id="s24"
+Sales
+```
+
+to:
+
+```text id="s25"
+Values
+```
+
+---
+
+# What Happens?
+
+Excel calculates:
+
+* Total sales for each region.
+
+---
+
+# Example Output
+
+| Region  | Sum of Sales |
+| ------- | ------------ |
+| East    | 678781       |
+| West    | 725458       |
+| South   | 391722       |
+| Central | 501239       |
+
+---
+
+# Why Called Roll-Up?
+
+Detailed rows are summarized into higher-level totals.
+
+---
+
+# Result
+
+Compact business summary generated.
+
+---
+
+# 4. DRILL-DOWN OPERATION
+
+# Purpose
+
+View detailed records behind summarized data.
+
+---
+
+# Steps
+
+## Step 1
+
+Double-click any sales total.
+
+Example:
+
+```text id="s26"
+West → 725458
+```
+
+---
+
+# What Happens?
+
+Excel opens new sheet containing:
+
+* All individual sales records for West region.
+
+---
+
+# Why Called Drill-Down?
+
+Because we move from:
+
+* Summary
+  → Detailed transactions
+
+---
+
+# Result
+
+Detailed records become visible.
+
+---
+
+# 5. PIVOT OPERATION
+
+# Purpose
+
+Change orientation of analysis.
+
+Used for multidimensional comparison.
+
+---
+
+# Steps
+
+## Step 1
+
+Drag:
+
+```text id="s27"
+Category
+```
+
+to:
+
+```text id="s28"
+Rows
+```
+
+---
+
+## Step 2
+
+Drag:
+
+```text id="s29"
+Region
+```
+
+to:
+
+```text id="s30"
+Columns
+```
+
+---
+
+## Step 3
+
+Drag:
+
+```text id="s31"
+Profit
+```
+
+to:
+
+```text id="s32"
+Values
+```
+
+---
+
+# What Happens?
+
+Excel creates comparison table like:
+
+| Category   | East   | West   | South  | Central |
+| ---------- | ------ | ------ | ------ | ------- |
+| Furniture  | Profit | Profit | Profit | Profit  |
+| Technology | Profit | Profit | Profit | Profit  |
+
+---
+
+# Why Called Pivot?
+
+Because:
+
+* Rows become columns
+* Data view rotates
+
+---
+
+# Result
+
+Different analytical perspective generated.
+
+---
+
+# Additional OLAP Analysis You Can Try
+
+| Analysis            | Fields             |
+| ------------------- | ------------------ |
+| Sales by State      | State + Sales      |
+| Profit by Category  | Category + Profit  |
+| Quantity by Segment | Segment + Quantity |
+| Region-wise Profit  | Region + Profit    |
+
+---
+
+# Advantages of Pivot Table
+
+* Fast analysis
+* Dynamic filtering
+* Business reporting
+* Easy summarization
+* Interactive dashboards
+
+---
+
+# Final Conclusion
+
+* OLAP operations successfully performed on Superstore dataset using Excel Pivot Table.
+* Operations demonstrated:
+
+  * Slice
+  * Dice
+  * Roll-Up
+  * Drill-Down
+  * Pivot
+* Pivot Tables help analyze large business datasets efficiently for decision making.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 You loaded `iris.arff` correctly, but for **OLAP operations** use `weather.nominal.arff` because it is easier to demonstrate Slice, Dice, etc.
 
 Right now you also selected the wrong filter (`RemoveFolds`), which is used for cross-validation, not OLAP.
