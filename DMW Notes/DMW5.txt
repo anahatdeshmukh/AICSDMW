@@ -1,5 +1,365 @@
 # Assignment No. 5
 
+# Regression using WEKA (Detailed Short Steps)
+
+---
+
+# Objective
+
+To perform:
+
+# Linear Regression
+
+using WEKA for predicting numeric values.
+
+Dataset used:
+
+```text id="r1"
+cpu.arff
+```
+
+---
+
+# What is Regression?
+
+Regression is used to:
+
+* Predict continuous numeric values.
+
+Examples:
+
+* House price prediction
+* Salary prediction
+* Sales forecasting
+
+---
+
+# Algorithm Used
+
+## Linear Regression
+
+Linear Regression finds relationship between:
+
+* Input attributes
+* Output numeric value
+
+Regression equation:
+
+genui{"math_block_widget_always_prefetch_v2":{"content":"y = mx + c"}}
+
+Where:
+
+* y = predicted value
+* x = input variable
+* m = slope
+* c = constant
+
+---
+
+# STEP 1 — Open WEKA
+
+1. Open:
+
+```text id="r2"
+WEKA
+```
+
+2. Click:
+
+```text id="r3"
+Explorer
+```
+
+---
+
+# What We Are Doing?
+
+Opening WEKA environment for machine learning experiments.
+
+---
+
+# STEP 2 — Load Dataset
+
+1. Go to:
+
+```text id="r4"
+Preprocess
+```
+
+2. Click:
+
+```text id="r5"
+Open File
+```
+
+3. Select:
+
+```text id="r6"
+data → cpu.arff
+```
+
+4. Click:
+
+```text id="r7"
+Open
+```
+
+---
+
+# What Happens?
+
+WEKA loads:
+
+* CPU dataset
+* Attributes
+* Numeric values
+
+Dataset information appears:
+
+* Number of instances
+* Number of attributes
+
+---
+
+# STEP 3 — Set Class Attribute
+
+At bottom-right corner:
+
+Select:
+
+```text id="r8"
+class
+```
+
+OR:
+
+```text id="r9"
+PRP
+```
+
+(depending on dataset version)
+
+---
+
+# What is Class Attribute?
+
+Class attribute is:
+
+# Target value to predict
+
+Example:
+Predicting CPU performance.
+
+---
+
+# STEP 4 — Open Classify Tab
+
+Click:
+
+```text id="r10"
+Classify
+```
+
+---
+
+# What We Are Doing?
+
+Choosing machine learning algorithm for prediction.
+
+---
+
+# STEP 5 — Select Linear Regression
+
+1. Click:
+
+```text id="r11"
+Choose
+→ functions
+→ LinearRegression
+```
+
+---
+
+# What Happens?
+
+WEKA selects:
+
+# Linear Regression algorithm
+
+This algorithm:
+
+* Learns relationships between variables
+* Creates prediction equation
+
+---
+
+# STEP 6 — Select Test Option
+
+Choose:
+
+```text id="r12"
+Use training set
+```
+
+---
+
+# What Happens?
+
+Same dataset used for:
+
+* Training
+* Testing
+
+Useful for demonstration purposes.
+
+---
+
+# STEP 7 — Run Algorithm
+
+Click:
+
+```text id="r13"
+Start
+```
+
+---
+
+# What Happens Internally?
+
+WEKA:
+
+1. Reads numeric data
+2. Finds relationships between attributes
+3. Builds regression equation
+4. Predicts output values
+
+---
+
+# OUTPUT EXPLANATION
+
+---
+
+# 1. Correlation Coefficient
+
+Example:
+
+```text id="r14"
+Correlation coefficient = 0.99
+```
+
+---
+
+# Meaning
+
+Measures:
+
+# Prediction accuracy
+
+| Value      | Meaning         |
+| ---------- | --------------- |
+| Close to 1 | Very accurate   |
+| Close to 0 | Poor prediction |
+
+---
+
+# Interpretation
+
+```text id="r15"
+0.99
+```
+
+means:
+
+* Model predictions are highly accurate.
+
+---
+
+# 2. Mean Absolute Error (MAE)
+
+Example:
+
+```text id="r16"
+Mean absolute error = 10.5
+```
+
+---
+
+# Meaning
+
+Average prediction error.
+
+Smaller value means:
+
+* Better prediction
+
+---
+
+# 3. Root Mean Squared Error (RMSE)
+
+Example:
+
+```text id="r17"
+Root mean squared error = 15.2
+```
+
+---
+
+# Meaning
+
+Measures:
+
+# Difference between actual and predicted values
+
+Lower RMSE:
+
+* Better regression model
+
+---
+
+# 4. Regression Equation
+
+Example:
+class = 2.5 \times attribute1 + 1.3 \times attribute2 + 5
+
+---
+
+# Meaning
+
+WEKA generated mathematical formula for prediction.
+
+Example:
+
+* Increasing attribute1 increases predicted value.
+
+---
+
+# RESULT
+
+* Linear Regression model trained successfully.
+* Numeric values predicted using dataset.
+* Regression analysis performed correctly.
+
+---
+
+# Conclusion
+
+* Regression was successfully implemented using WEKA.
+* `cpu.arff` dataset was used.
+* Linear Regression predicted continuous numeric values accurately.
+* Regression is useful for:
+
+  * Forecasting
+  * Prediction
+  * Trend analysis
+
+
+
+
+
+
+
+# Assignment No. 5
+
 # Demonstrate Performing Regression on Dataset Using Weka
 
 ---
