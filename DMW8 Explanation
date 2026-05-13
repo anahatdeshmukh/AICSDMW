@@ -1,0 +1,753 @@
+# Apriori Algorithm Program
+
+# Code Line Followed by Explanation
+
+---
+
+## Code Line
+
+```python id="ax1"
+from itertools import combinations
+```
+
+### Explanation
+
+Imports:
+
+```text id="ax2"
+combinations
+```
+
+function from Python itertools library.
+
+Used to:
+
+* Generate item pairs/combinations
+
+Example:
+
+```text id="ax3"
+(Milk, Bread)
+(Milk, Butter)
+```
+
+---
+
+# Dataset Creation
+
+## Code Line
+
+```python id="ax4"
+transactions = [
+```
+
+### Explanation
+
+Starts creating transaction dataset.
+
+---
+
+## Code Line
+
+```python id="ax5"
+['Milk', 'Bread', 'Butter'],
+```
+
+### Explanation
+
+First transaction contains:
+
+* Milk
+* Bread
+* Butter
+
+---
+
+## Code Line
+
+```python id="ax6"
+['Bread', 'Butter'],
+```
+
+### Explanation
+
+Second transaction contains:
+
+* Bread
+* Butter
+
+---
+
+## Code Line
+
+```python id="ax7"
+['Milk', 'Bread'],
+```
+
+### Explanation
+
+Third transaction contains:
+
+* Milk
+* Bread
+
+---
+
+## Code Line
+
+```python id="ax8"
+['Milk', 'Butter'],
+```
+
+### Explanation
+
+Fourth transaction contains:
+
+* Milk
+* Butter
+
+---
+
+## Code Line
+
+```python id="ax9"
+['Bread']
+```
+
+### Explanation
+
+Fifth transaction contains:
+
+* Bread only
+
+---
+
+## Code Line
+
+```python id="ax10"
+]
+```
+
+### Explanation
+
+Ends transaction dataset.
+
+---
+
+# Minimum Support
+
+## Code Line
+
+```python id="ax11"
+min_support = 2
+```
+
+### Explanation
+
+Sets minimum support count.
+
+Meaning:
+
+* Itemset must appear at least 2 times
+* Otherwise removed
+
+---
+
+# Minimum Confidence
+
+## Code Line
+
+```python id="ax12"
+min_confidence = 0.5
+```
+
+### Explanation
+
+Sets minimum confidence value.
+
+Meaning:
+
+```text id="ax13"
+50%
+```
+
+Rules below 50% confidence are rejected.
+
+---
+
+# Find Unique Items
+
+## Code Line
+
+```python id="ax14"
+items = set()
+```
+
+### Explanation
+
+Creates empty set.
+
+Used to store:
+
+# Unique items
+
+---
+
+## Code Line
+
+```python id="ax15"
+for transaction in transactions:
+```
+
+### Explanation
+
+Loops through every transaction.
+
+---
+
+## Code Line
+
+```python id="ax16"
+for item in transaction:
+```
+
+### Explanation
+
+Loops through every item inside transaction.
+
+---
+
+## Code Line
+
+```python id="ax17"
+items.add(item)
+```
+
+### Explanation
+
+Adds item into set.
+
+Automatically removes duplicates.
+
+---
+
+# Result
+
+Unique items become:
+
+```text id="ax18"
+Milk, Bread, Butter
+```
+
+---
+
+# Frequent 1-Itemsets
+
+## Code Line
+
+```python id="ax19"
+freq1 = {}
+```
+
+### Explanation
+
+Creates dictionary for:
+
+# Frequent 1-itemsets
+
+Stores:
+
+* Item
+* Support count
+
+---
+
+## Code Line
+
+```python id="ax20"
+for item in items:
+```
+
+### Explanation
+
+Loops through every unique item.
+
+---
+
+## Code Line
+
+```python id="ax21"
+count = 0
+```
+
+### Explanation
+
+Initializes support count to zero.
+
+---
+
+## Code Line
+
+```python id="ax22"
+for transaction in transactions:
+```
+
+### Explanation
+
+Checks all transactions.
+
+---
+
+## Code Line
+
+```python id="ax23"
+if item in transaction:
+```
+
+### Explanation
+
+Checks whether item exists in transaction.
+
+---
+
+## Code Line
+
+```python id="ax24"
+count += 1
+```
+
+### Explanation
+
+Increases support count by 1.
+
+---
+
+## Code Line
+
+```python id="ax25"
+if count >= min_support:
+```
+
+### Explanation
+
+Checks if support satisfies minimum support condition.
+
+---
+
+## Code Line
+
+```python id="ax26"
+freq1[(item,)] = count
+```
+
+### Explanation
+
+Stores frequent item and support count.
+
+Example:
+
+```text id="ax27"
+('Milk',): 3
+```
+
+---
+
+# Display Frequent 1-Itemsets
+
+## Code Line
+
+```python id="ax28"
+print("Frequent 1-itemsets:")
+```
+
+### Explanation
+
+Displays heading.
+
+---
+
+## Code Line
+
+```python id="ax29"
+print(freq1)
+```
+
+### Explanation
+
+Prints frequent 1-itemsets.
+
+---
+
+# Frequent 2-Itemsets
+
+## Code Line
+
+```python id="ax30"
+freq2 = {}
+```
+
+### Explanation
+
+Creates dictionary for:
+
+# Frequent 2-itemsets
+
+---
+
+## Code Line
+
+```python id="ax31"
+pairs = combinations(items, 2)
+```
+
+### Explanation
+
+Generates all possible 2-item combinations.
+
+Example:
+
+```text id="ax32"
+(Milk, Bread)
+(Milk, Butter)
+(Bread, Butter)
+```
+
+---
+
+## Code Line
+
+```python id="ax33"
+for pair in pairs:
+```
+
+### Explanation
+
+Loops through every pair combination.
+
+---
+
+## Code Line
+
+```python id="ax34"
+count = 0
+```
+
+### Explanation
+
+Initializes support count.
+
+---
+
+## Code Line
+
+```python id="ax35"
+for transaction in transactions:
+```
+
+### Explanation
+
+Checks every transaction.
+
+---
+
+## Code Line
+
+```python id="ax36"
+if set(pair).issubset(set(transaction)):
+```
+
+### Explanation
+
+Checks whether pair exists completely inside transaction.
+
+Example:
+
+```text id="ax37"
+(Milk, Bread)
+```
+
+must both exist.
+
+---
+
+## Code Line
+
+```python id="ax38"
+count += 1
+```
+
+### Explanation
+
+Increases pair support count.
+
+---
+
+## Code Line
+
+```python id="ax39"
+if count >= min_support:
+```
+
+### Explanation
+
+Checks support threshold.
+
+---
+
+## Code Line
+
+```python id="ax40"
+freq2[pair] = count
+```
+
+### Explanation
+
+Stores frequent pair and support count.
+
+---
+
+# Display Frequent 2-Itemsets
+
+## Code Line
+
+```python id="ax41"
+print("\nFrequent 2-itemsets:")
+```
+
+### Explanation
+
+Displays heading.
+
+---
+
+## Code Line
+
+```python id="ax42"
+print(freq2)
+```
+
+### Explanation
+
+Prints all frequent 2-itemsets.
+
+---
+
+# Association Rules
+
+## Code Line
+
+```python id="ax43"
+print("\nAssociation Rules:")
+```
+
+### Explanation
+
+Displays heading for rules.
+
+---
+
+## Code Line
+
+```python id="ax44"
+for pair in freq2:
+```
+
+### Explanation
+
+Loops through every frequent pair.
+
+---
+
+## Code Line
+
+```python id="ax45"
+a, b = pair
+```
+
+### Explanation
+
+Splits pair into:
+
+* a
+* b
+
+Example:
+
+```text id="ax46"
+Milk, Bread
+```
+
+---
+
+## Code Line
+
+```python id="ax47"
+support_ab = freq2[pair]
+```
+
+### Explanation
+
+Gets support count for pair.
+
+---
+
+## Code Line
+
+```python id="ax48"
+support_a = freq1[(a,)]
+```
+
+### Explanation
+
+Gets support count for item A.
+
+---
+
+## Code Line
+
+```python id="ax49"
+support_b = freq1[(b,)]
+```
+
+### Explanation
+
+Gets support count for item B.
+
+---
+
+# Confidence Calculation
+
+## Code Line
+
+```python id="ax50"
+confidence_a_b = support_ab / support_a
+```
+
+### Explanation
+
+Calculates confidence:
+Confidence(A \rightarrow B)=\frac{Support(A\cap B)}{Support(A)}
+
+---
+
+## Code Line
+
+```python id="ax51"
+confidence_b_a = support_ab / support_b
+```
+
+### Explanation
+
+Calculates reverse confidence:
+
+```text id="ax52"
+B → A
+```
+
+---
+
+# Check Confidence Threshold
+
+## Code Line
+
+```python id="ax53"
+if confidence_a_b >= min_confidence:
+```
+
+### Explanation
+
+Checks if rule confidence satisfies minimum confidence.
+
+---
+
+## Code Line
+
+```python id="ax54"
+print(f"{a} -> {b}  Confidence = {confidence_a_b:.2f}")
+```
+
+### Explanation
+
+Prints association rule.
+
+Example:
+
+```text id="ax55"
+Milk -> Bread
+Confidence = 0.67
+```
+
+---
+
+## Code Line
+
+```python id="ax56"
+if confidence_b_a >= min_confidence:
+```
+
+### Explanation
+
+Checks reverse rule confidence.
+
+---
+
+## Code Line
+
+```python id="ax57"
+print(f"{b} -> {a}  Confidence = {confidence_b_a:.2f}")
+```
+
+### Explanation
+
+Prints reverse association rule.
+
+Example:
+
+```text id="ax58"
+Bread -> Milk
+Confidence = 0.50
+```
+
+---
+
+# Final Output
+
+## Frequent 1-itemsets
+
+Example:
+
+```text id="ax59"
+Milk: 3
+Bread: 4
+Butter: 3
+```
+
+---
+
+## Frequent 2-itemsets
+
+Example:
+
+```text id="ax60"
+(Milk, Bread): 2
+```
+
+---
+
+## Association Rules
+
+Example:
+
+```text id="ax61"
+Milk -> Bread
+Bread -> Butter
+```
+
+---
+
+# Conclusion
+
+* Apriori algorithm implemented successfully.
+* Frequent itemsets generated using minimum support.
+* Association rules generated using confidence measure.
+* Hidden relationships between items discovered successfully.
