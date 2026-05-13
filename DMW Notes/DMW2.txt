@@ -1,3 +1,180 @@
+## Short Steps to Perform Assignment in WEKA
+
+### Data Preprocessing + Association Rule Mining
+
+Based on your lab file 
+
+---
+
+# Part A — Data Preprocessing
+
+## Step 1
+
+Open **WEKA**
+
+---
+
+## Step 2
+
+Click:
+
+```text id="4a"
+Explorer
+```
+
+---
+
+## Step 3
+
+Go to:
+
+```text id="4b"
+Preprocess
+```
+
+---
+
+## Step 4
+
+Click:
+
+```text id="4c"
+Open File
+```
+
+Load dataset:
+
+```text id="4d"
+weather.symbolic.arff
+```
+
+---
+
+## Step 5
+
+Apply Discretization Filter
+
+Click:
+
+```text id="4e"
+Choose
+→ filters
+→ supervised
+→ attribute
+→ Discretize
+```
+
+---
+
+## Step 6
+
+Click:
+
+```text id="4f"
+Apply
+```
+
+### What Happens?
+
+Numeric values convert into categories/groups.
+
+---
+
+# Part B — Association Rule Mining
+
+## Step 7
+
+Go to:
+
+```text id="4g"
+Associate Tab
+```
+
+---
+
+## Step 8
+
+Choose Apriori Algorithm
+
+Click:
+
+```text id="4h"
+Choose
+→ associations
+→ Apriori
+```
+
+---
+
+## Step 9
+
+Set Parameters
+
+| Parameter       | Value |
+| --------------- | ----- |
+| Number of Rules | 10    |
+| Confidence      | 0.9   |
+| Minimum Support | 0.1   |
+
+---
+
+## Step 10
+
+Click:
+
+```text id="4i"
+Start
+```
+
+---
+
+# Output
+
+WEKA generates rules like:
+
+```text id="4j"
+outlook=overcast ==> play=yes
+```
+
+### Meaning
+
+Whenever outlook is overcast,
+people always played.
+
+---
+
+# Important Points to Write in Record
+
+## Preprocessing
+
+Used to clean and prepare data.
+
+## Discretization
+
+Converts numeric data into categories.
+
+## Apriori
+
+Finds hidden relationships between attributes.
+
+## Support
+
+How frequently rule appears.
+
+## Confidence
+
+How accurate the rule is.
+
+---
+
+# Conclusion
+
+* Preprocessing performed successfully.
+* Apriori generated association rules.
+* Strong patterns were identified in dataset.
+
+
+
 # Assignment No. 2
 
 ## Perform Data Preprocessing Tasks and Demonstrate Association Rule Mining
