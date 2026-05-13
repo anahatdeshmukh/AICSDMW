@@ -1,3 +1,449 @@
+# Assignment No. 6
+
+# Visualization of Cluster Sets in WEKA (Detailed Steps)
+
+---
+
+# Objective
+
+To perform:
+
+# Cluster Visualization
+
+using:
+
+```text id="c1"
+Simple K-Means
+```
+
+on:
+
+```text id="c2"
+iris.arff
+```
+
+dataset in WEKA.
+
+---
+
+# What is Clustering?
+
+Clustering means:
+
+# Grouping similar data together
+
+It is:
+
+* Unsupervised learning
+* No predefined class labels required
+
+---
+
+# Algorithm Used
+
+## Simple K-Means
+
+K-Means:
+
+* Divides data into K groups
+* Groups similar instances together
+
+Example:
+
+```text id="c3"
+K = 3
+```
+
+means:
+
+* Dataset divided into 3 clusters.
+
+---
+
+# STEP 1 — Open WEKA
+
+1. Open:
+
+```text id="c4"
+WEKA
+```
+
+2. Click:
+
+```text id="c5"
+Explorer
+```
+
+---
+
+# What We Are Doing?
+
+Opening WEKA environment for clustering experiment.
+
+---
+
+# STEP 2 — Load Dataset
+
+1. Go to:
+
+```text id="c6"
+Preprocess
+```
+
+2. Click:
+
+```text id="c7"
+Open File
+```
+
+3. Select:
+
+```text id="c8"
+data → iris.arff
+```
+
+4. Click:
+
+```text id="c9"
+Open
+```
+
+---
+
+# What Happens?
+
+WEKA loads Iris flower dataset.
+
+Dataset contains:
+
+* Sepal length
+* Sepal width
+* Petal length
+* Petal width
+* Flower type
+
+Total:
+
+```text id="c10"
+150 instances
+```
+
+---
+
+# STEP 3 — Open Cluster Tab
+
+Click:
+
+```text id="c11"
+Cluster
+```
+
+---
+
+# What We Are Doing?
+
+Selecting clustering algorithms.
+
+---
+
+# STEP 4 — Select Simple K-Means
+
+1. Click:
+
+```text id="c12"
+Choose
+→ clusterers
+→ SimpleKMeans
+```
+
+---
+
+# What Happens?
+
+WEKA selects:
+
+# Simple K-Means clustering algorithm
+
+This algorithm:
+
+* Finds similar data points
+* Creates clusters
+
+---
+
+# STEP 5 — Set Number of Clusters
+
+1. Click algorithm name:
+
+```text id="c13"
+SimpleKMeans
+```
+
+2. Set:
+
+```text id="c14"
+Num Clusters = 3
+```
+
+3. Click:
+
+```text id="c15"
+OK
+```
+
+---
+
+# Why 3 Clusters?
+
+Because Iris dataset contains:
+
+* 3 flower categories
+
+So:
+
+```text id="c16"
+K = 3
+```
+
+is appropriate.
+
+---
+
+# STEP 6 — Ignore Class Attribute
+
+Uncheck:
+
+```text id="c17"
+Classes to Clusters Evaluation
+```
+
+OR ignore class attribute.
+
+---
+
+# Why?
+
+Clustering is:
+
+# Unsupervised learning
+
+Algorithm should group data independently.
+
+---
+
+# STEP 7 — Run Algorithm
+
+Click:
+
+```text id="c18"
+Start
+```
+
+---
+
+# What Happens Internally?
+
+WEKA:
+
+1. Randomly selects centroids
+2. Measures distances between points
+3. Assigns nearest points to clusters
+4. Updates centroids
+5. Repeats until stable
+
+Distance formula used:
+
+genui{"math_block_widget_always_prefetch_v2":{"content":"d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}"}}
+
+---
+
+# STEP 8 — Locate Result List
+
+After execution:
+
+Left-side panel shows:
+
+```text id="c19"
+1: SimpleKMeans
+```
+
+---
+
+# What This Means?
+
+WEKA successfully generated clusters.
+
+---
+
+# STEP 9 — Open Visualization
+
+1. Right-click:
+
+```text id="c20"
+SimpleKMeans result
+```
+
+2. Click:
+
+```text id="c21"
+Visualize cluster assignments
+```
+
+---
+
+# What Happens?
+
+Visualization window opens.
+
+WEKA displays:
+
+* Scatter plot
+* Cluster groups
+* Colored data points
+
+---
+
+# STEP 10 — Understand Visualization
+
+Each:
+
+* Dot = one flower instance
+
+Each:
+
+* Color = different cluster
+
+Example:
+
+| Color | Cluster   |
+| ----- | --------- |
+| Red   | Cluster 1 |
+| Blue  | Cluster 2 |
+| Green | Cluster 3 |
+
+---
+
+# STEP 11 — Change Axes
+
+At bottom of graph:
+
+Choose:
+
+* X-axis attribute
+* Y-axis attribute
+
+---
+
+# Best Attribute Combinations
+
+## Combination 1
+
+```text id="c22"
+petallength vs petalwidth
+```
+
+---
+
+## Combination 2
+
+```text id="c23"
+sepallength vs sepalwidth
+```
+
+---
+
+# What Happens?
+
+Graph changes dynamically.
+
+Helps observe:
+
+* Cluster separation
+* Similarity between flowers
+
+---
+
+# Interpretation
+
+* Similar flowers appear in same cluster.
+* Different flower types separate visually.
+
+Example:
+
+* Iris-setosa usually forms separate cluster.
+* Versicolor and Virginica may overlap slightly.
+
+---
+
+# Output Explanation
+
+WEKA shows:
+
+* Number of clusters
+* Cluster centroids
+* Cluster sizes
+
+Example:
+
+```text id="c24"
+Cluster 0 → 50 instances
+Cluster 1 → 62 instances
+Cluster 2 → 38 instances
+```
+
+---
+
+# Viva Questions
+
+## What is clustering?
+
+Grouping similar data points together.
+
+---
+
+## Why K-Means is called unsupervised?
+
+Because no class labels are used.
+
+---
+
+## Why use visualization?
+
+To understand cluster formation graphically.
+
+---
+
+## What does each color represent?
+
+Different cluster groups.
+
+---
+
+# Result
+
+* Iris dataset clustered successfully using Simple K-Means.
+* Three clusters generated.
+* Cluster visualization displayed grouped flower patterns.
+
+---
+
+# Conclusion
+
+* Clustering was successfully performed in WEKA.
+* Scatter plot visualization helped understand cluster distribution.
+* Similar flower instances grouped together using K-Means algorithm.
+* Visualization improved understanding of cluster patterns.
+
+
+
+
+
+
+
+
+
+
+
 # Visualization of Cluster Sets in Weka
 
 After running Simple K-Means on `iris.arff`, follow these steps to visualize clusters.
