@@ -1,3 +1,247 @@
+# Short Steps to Perform Assignment No. 3 in WEKA
+
+## Classification using Naive Bayes on Iris Dataset
+
+---
+
+# Step 1
+
+Open **WEKA**
+
+---
+
+# Step 2
+
+Click:
+
+```text id="a1"
+Explorer
+```
+
+---
+
+# Step 3
+
+Go to:
+
+```text id="a2"
+Preprocess
+```
+
+---
+
+# Step 4
+
+Click:
+
+```text id="a3"
+Open File
+```
+
+Load dataset:
+
+```text id="a4"
+iris.arff
+```
+
+---
+
+# Step 5 — Remove Unwanted Attributes
+
+Click:
+
+```text id="a5"
+Choose
+→ filters
+→ unsupervised
+→ attribute
+→ Remove
+```
+
+Select unwanted attributes and click:
+
+```text id="a6"
+Apply
+```
+
+### What Happens?
+
+Removes unnecessary columns.
+
+---
+
+# Step 6 — Normalize Data
+
+Click:
+
+```text id="a7"
+Choose
+→ filters
+→ unsupervised
+→ attribute
+→ Normalize
+```
+
+Click:
+
+```text id="a8"
+Apply
+```
+
+### What Happens?
+
+Scales values between:
+0 \leq x \leq 1
+
+---
+
+# Step 7 — Replace Missing Values
+
+Click:
+
+```text id="a9"
+Choose
+→ filters
+→ unsupervised
+→ attribute
+→ ReplaceMissingValues
+```
+
+Click:
+
+```text id="a10"
+Apply
+```
+
+### What Happens?
+
+Missing values are replaced automatically.
+
+---
+
+# Step 8 — Attribute Selection
+
+Click:
+
+```text id="a11"
+Choose
+→ filters
+→ supervised
+→ attribute
+→ AttributeSelection
+```
+
+Click:
+
+```text id="a12"
+Apply
+```
+
+### What Happens?
+
+Important attributes are selected.
+
+---
+
+# Step 9
+
+Go to:
+
+```text id="a13"
+Classify Tab
+```
+
+---
+
+# Step 10 — Select Naive Bayes
+
+Click:
+
+```text id="a14"
+Choose
+→ bayes
+→ NaiveBayes
+```
+
+---
+
+# Step 11 — Choose Test Option
+
+Select:
+
+```text id="a15"
+10-fold Cross Validation
+```
+
+### What Happens?
+
+Dataset divides into 10 parts for testing and training.
+
+---
+
+# Step 12
+
+Click:
+
+```text id="a16"
+Start
+```
+
+---
+
+# Output Interpretation
+
+## Correctly Classified Instances
+
+```text id="a17"
+144 (96%)
+```
+
+Meaning:
+144 flowers classified correctly.
+
+---
+
+## Incorrectly Classified Instances
+
+```text id="a18"
+6 (4%)
+```
+
+Meaning:
+6 flowers predicted wrongly.
+
+---
+
+## Confusion Matrix
+
+```text id="a19"
+50 0 0
+0 47 3
+0 3 47
+```
+
+Meaning:
+
+* Iris-setosa classified perfectly
+* Small confusion between:
+
+  * Iris-versicolor
+  * Iris-virginica
+
+---
+
+# Conclusion
+
+* Naive Bayes classification performed successfully.
+* Iris dataset classified with high accuracy.
+* Accuracy obtained:
+
+```text id="a20"
+96%
+```
+
+
 # Assignment No. 3
 
 ## Demonstration of Classification Process using Naive Bayes Algorithm on Iris Dataset
